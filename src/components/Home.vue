@@ -1,24 +1,27 @@
 <template>
-  <div id="home">
-    <AddNote />
-    <SingleNote
-      :key="item.title"
-      v-for="item in allnotes"
-      :title="item.title"
-      :color="item.color"
-      :content="item.content"
-    />
+  <div>
+    <input type="text" v-model="search" placeholder="search note" />
+    <div id="home">
+      <AddNote />
+      <SingleNote
+        :key="item.title"
+        v-for="item in selectedNote"
+        :title="item.title"
+        :color="item.color"
+        :content="item.content"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import SingleNote from "./SingleNote.vue";
 import AddNote from "./AddNote";
-import { datas } from "../data.js";
+import searchMixin from "../mixins/searchMixin";
 
 export default {
   data() {
-    return { datas };
+    return { search: "" };
   },
   components: { SingleNote, AddNote },
   computed: {
@@ -26,6 +29,7 @@ export default {
       return this.$store.state.allNotes;
     },
   },
+  mixins: [searchMixin],
 };
 </script>
 

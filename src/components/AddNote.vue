@@ -1,5 +1,5 @@
 <template>
-  <div id="single-note" :style="style">
+  <div id="single-note">
     <form v-if="showForm" @submit.prevent="post">
       <div>Title:</div>
       <input type="text" v-model="note.title" required />
@@ -48,12 +48,11 @@ export default {
         color: "",
       };
     },
-    // ...mapActions(["addNote"]),
   },
 };
 </script>
 
-<style>
+<style scoped>
 #single-note {
   width: 200px;
   border: 2px solid grey;
