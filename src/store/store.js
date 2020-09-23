@@ -23,4 +23,14 @@ export const store = new Vuex.Store({
       },
     ],
   },
+  mutations: {
+    addNote: (state, payload) => {
+      state.allNotes = state.allNotes.concat(payload);
+    },
+  },
+  actions: {
+    addNote(context, payload) {
+      context.commit("addNote", payload);
+    },
+  },
 });

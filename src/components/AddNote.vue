@@ -22,6 +22,7 @@
 </template>
 
 <script>
+// import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -40,7 +41,14 @@ export default {
     },
     post: function () {
       this.showForm = false;
+      this.$store.dispatch("addNote", this.note);
+      this.note = {
+        title: "",
+        content: "",
+        color: "",
+      };
     },
+    // ...mapActions(["addNote"]),
   },
 };
 </script>
@@ -53,15 +61,15 @@ export default {
   margin: 20px;
 }
 #cyan {
-  outline: 2px solid cyan;
+  outline: 5px solid cyan;
 }
 #magenta {
-  outline: 2px solid magenta;
+  outline: 5px solid magenta;
 }
 #yellow {
-  outline: 2px solid yellow;
+  outline: 5px solid yellow;
 }
 #teal {
-  outline: 2px solid teal;
+  outline: 5px solid teal;
 }
 </style>
